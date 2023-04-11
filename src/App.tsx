@@ -1,31 +1,28 @@
-import { useState } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import UserLayout from './components/layout/userLayout'
-import HomePage from './pages/home'
-import Detailpage from './pages/detail'
-import DetailLayout from './components/layout/detailLayout'
-import AdminLayout from './components/layout/adminLayout'
-import Adminpage from './pages/admin'
-import Signup from './pages/signup'
-import Signin from './pages/signin'
+import { Routes,Route } from "react-router-dom"
+import HomePage from "./pages/HomePage"
+import ListProduct from "./pages/admin/ListProduct"
+import { useEffect, useState } from "react"
+import { getAll } from "./api/product"
+import Iproduct from "./interface/product"
 
-// 1. Khai báo router react-router-dom
 
 function App() {
+  const [products,setProducts]=useState<Iproduct[]>([])
+  console.log(products)
+  useEffect(()=>{
+ getAll().then(({data})=>setProducts(data))
+  },[])
 
-  return <BrowserRouter>
-    <Routes>
-      <Route path='/signup' element={<Signup/>}/>
-      <Route path='/signin' element={<Signin/>}/>
-      <Route path='/' element={<UserLayout />}> {/* user layout */}
-        <Route index element={<HomePage />} />
-        <Route path='detail' element={<Detailpage />} />
-      </Route>
-      <Route path='/admin' element={<AdminLayout />}> {/* admin layout */}
-        <Route index element={<Adminpage />} />
-      </Route>
-    </Routes>
-  </BrowserRouter>
+  return (
+   <Routes>
+    <Route path="/">
+     <Route index element={<HomePage/>}/> 
+     <Route path="admin/product">
+     <Route index element={<ListProduct product={products}/>}/>
+     </Route>
+    </Route>
+   </Routes>
+  )
 }
 
 export default App
