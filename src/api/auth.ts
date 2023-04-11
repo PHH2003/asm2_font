@@ -6,6 +6,6 @@ export const signup = (user: SignupForm) => {
     return instance.post(uri, user)
 }
 export const signin = (user: SigninForm) => {
-    const uri = '/signup'
+    const uri = '/signin'
     return instance.post(uri, user)
 }

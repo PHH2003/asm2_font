@@ -31,6 +31,14 @@
       "lastName": "phan",
       "confirmPassword": "123456",
       "id": 4
+    },
+    {
+      "email": "hiep12@gmail.com",
+      "password": "$2a$10$BPEZqQZp30J.C8pgakVqQ.cL6bN2Yd3xyHeweGyRkXIEWb4GfaG5.",
+      "firstName": "abcc",
+      "lastName": "ccc",
+      "confirmPassword": "123456",
+      "id": 5
     }
   ],
   "products": [

@@ -16,17 +16,19 @@ const Signin = () => {
     })
     const [user, setUser] = useLocalStorege("user", null)
     const onSubmit = async (data: SigninForm) => {
-      try {
-        const {data: {accessToken, user}} = await signin(data)
+      console.log(data)
+      try {       
+        const {data: {accessToken, user}} = await signin(data)    
         setUser({
           accessToken,
           user
+
         })
+        navigate('/')
     }catch(err) {
         console.log(err);
     }
-        
-        
+              
     }
 
     return <section className="bg-white">
